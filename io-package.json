@@ -1,0 +1,79 @@
+{
+	"common": {
+		"name": "fordpass",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "FordPass Connect",
+		"titleLang": {
+			"en": "FordPass Connect",
+			"de": "FordPass Connect",
+			"ru": "FordPass Connect",
+			"pt": "FordPass Connect",
+			"nl": "FordPass Connect",
+			"fr": "FordPass Connect",
+			"it": "FordPass Connect",
+			"es": "FordPass Connect",
+			"pl": "FordPass Connect",
+			"zh-cn": "福特通"
+		},
+		"desc": {
+			"en": "Data from Ford API",
+			"de": "Daten von der Ford API",
+			"ru": "Данные из Ford API",
+			"pt": "Dados da API Ford",
+			"nl": "Gegevens van Ford API",
+			"fr": "Données de l'API Ford",
+			"it": "Dati da Ford API",
+			"es": "Datos de la API de Ford",
+			"pl": "Dane z Ford API",
+			"zh-cn": "福特API的数据"
+		},
+		"authors": [
+			"Horak2084 <horak@live.at>"
+		],
+		"keywords": [
+			"FordPass",
+			"Ford",
+			"Sync3"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "fordpass.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/Horak2084/ioBroker.fordpass/master/admin/fordpass.png",
+		"readme": "https://github.com/Horak2084/ioBroker.fordpass/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "vehicle",
+		"compact": true,
+		"connectionType": "cloud",
+		"dataSource": "poll",
+		"materialize": true,
+		"dependencies": [
+			{
+				"js-controller": ">=2.0.0"
+			}
+		]
+	},
+	"native": {
+		"user": "Username",
+		"password": "Password",
+		"vin": "vin"
+	},
+	"objects": [],
+	"instanceObjects": []
+}

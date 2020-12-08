@@ -1,0 +1,42 @@
+{
+	"cli": true,
+	"adapterName": "fordpass",
+	"title": "FordPass Connect",
+	"description": "Data from Ford API",
+	"keywords": [
+		"FordPass",
+		"Ford",
+		"Sync3"
+	],
+	"contributors": [
+		"Horak2084"
+	],
+	"expert": "no",
+	"features": [
+		"adapter"
+	],
+	"adminFeatures": [],
+	"type": "vehicle",
+	"startMode": "daemon",
+	"connectionType": "cloud",
+	"dataSource": "poll",
+	"connectionIndicator": "no",
+	"language": "JavaScript",
+	"adminReact": "no",
+	"tools": [
+		"ESLint",
+		"type checking"
+	],
+	"indentation": "Tab",
+	"quotes": "double",
+	"es6class": "yes",
+	"authorName": "Horak2084",
+	"authorGithub": "Horak2084",
+	"authorEmail": "horak@live.at",
+	"gitRemoteProtocol": "HTTPS",
+	"gitCommit": "no",
+	"license": "MIT License",
+	"ci": "gh-actions",
+	"dependabot": "no",
+	"creatorVersion": "1.31.0"
+}
