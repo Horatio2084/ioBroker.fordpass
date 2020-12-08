@@ -91,9 +91,84 @@ class Fordpass extends utils.Adapter {
 			},
 			native: {},
 		});
+		this.setObjectNotExistsAsync("fuelLevel", {
+			type: "state",
+			common: {
+				name: "fuelLevel",
+				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("fueldistanceToEmpty", {
+			type: "state",
+			common: {
+				name: "fueldistanceToEmpty",
+				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("latitude", {
+			type: "state",
+			common: {
+				name: "GPS Latitude",
+				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("longitude", {
+			type: "state",
+			common: {
+				name: "GPS Longitude",
+				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("oilLife", {
+			type: "state",
+			common: {
+				name: "OilLife",
+				type: "string",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("oilLifeActual", {
+			type: "state",
+			common: {
+				name: "OilLife in %",
+				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+
 		this.setStateAsync("VIN", vehicleData.vin);
 		this.setStateAsync("Lockstatus",vehicleData.lockStatus.value);
 		this.setStateAsync("Odometer", vehicleData.odometer.value);
+		this.setStateAsync("fuelLevel",vehicleData.fuel.fuelLevel);
+		this.setStateAsync("fueldistanceToEmpty", vehicleData.fuel.distanceToEmpty);
+		this.setStateAsync("latitude",vehicleData.gps.latitude);
+		this.setStateAsync("longitude", vehicleData.gps.longitude);
+		this.setStateAsync("oilLife",vehicleData.oil.oilLife);
+		this.setStateAsync("oilLifeActual", vehicleData.oil.oilLifeActual);
+	
+	
 		setInterval(main, this.config.interval, this);
 
 	
@@ -232,5 +307,11 @@ async function main(object) {
 	object.setStateAsync("VIN", vehicleData.vin);
 	object.setStateAsync("Lockstatus",vehicleData.lockStatus.value);
 	object.setStateAsync("Odometer", vehicleData.odometer.value);
-	object.log.info("Data Update");
+	object.setStateAsync("fuelLevel",vehicleData.fuel.fuelLevel);
+	object.setStateAsync("fueldistanceToEmpty", vehicleData.fuel.distanceToEmpty);
+	object.setStateAsync("latitude",vehicleData.gps.latitude);
+	object.setStateAsync("flongitude", vehicleData.gps.longitude);
+	object.setStateAsync("oilLife",vehicleData.oil.oilLife);
+	object.setStateAsync("OilLifeActual", vehicleData.oil.oilLifeActual);
+	//object.log.info("Data Update");
 }

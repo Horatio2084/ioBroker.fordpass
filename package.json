@@ -3,15 +3,15 @@
   "version": "0.0.1",
   "description": "Data from Ford API",
   "author": {
-    "name": "Horak2084",
+    "name": "Horatio2084",
     "email": "horak@live.at"
   },
   "contributors": [
     {
-      "name": "Horak2084"
+      "name": "Horatio2084"
     }
   ],
-  "homepage": "https://github.com/Horak2084/ioBroker.fordpass",
+  "homepage": "https://github.com/Horatio2084/ioBroker.fordpass",
   "license": "MIT",
   "keywords": [
     "FordPass",
@@ -58,7 +58,7 @@
     "lint": "eslint"
   },
   "bugs": {
-    "url": "https://github.com/Horak2084/ioBroker.fordpass/issues"
+    "url": "https://github.com/Horatio2084/ioBroker.fordpass/issues"
   },
   "readmeFilename": "README.md"
 }
