@@ -340,17 +340,17 @@ async function main(object) {
 	await car.auth()
 	var vehicleData = await car.status();
 
-	object.setStateAsync("VIN", vehicleData.vin);
-	object.setStateAsync("Lockstatus",vehicleData.lockStatus.value);
-	object.setStateAsync("Odometer", vehicleData.odometer.value);
-	object.setStateAsync("fuelLevel",vehicleData.fuel.fuelLevel);
-	object.setStateAsync("fueldistanceToEmpty", vehicleData.fuel.distanceToEmpty);
-	object.setStateAsync("latitude",vehicleData.gps.latitude);
-	object.setStateAsync("flongitude", vehicleData.gps.longitude);
-	object.setStateAsync("oilLife",vehicleData.oil.oilLife);
-	object.setStateAsync("OilLifeActual", vehicleData.oil.oilLifeActual);
-	object.setStateAsync("batteryHealth",vehicleData.battery.batteryHealth.value);
-	object.setStateAsync("batteryStatusActual", vehicleData.battery.batteryStatusActual.value);
-	object.setStateAsync("tirePressure", vehicleData.tirePressure.value);
+	await object.setStateAsync("VIN", { val: vehicleData.vin, ack: true });
+	await object.setStateAsync("Lockstatus", { val: vehicleData.lockStatus.value, ack: true });
+	await object.setStateAsync("Odometer", { val: vehicleData.odometer.value, ack: true });
+	await object.setStateAsync("fuelLevel", { val: vehicleData.fuel.fuelLevel, ack: true });
+	await object.setStateAsync("fueldistanceToEmpty", { val: vehicleData.fuel.distanceToEmpty, ack: true });
+	await object.setStateAsync("latitude", { val: vehicleData.gps.latitude, ack: true });
+	await object.setStateAsync("longitude", { val: vehicleData.gps.longitude, ack: true });
+	await object.setStateAsync("oilLife", { val: vehicleData.oil.oilLife, ack: true });
+	await object.setStateAsync("oilLifeActual", { val: vehicleData.oil.oilLifeActual, ack: true });
+	await object.setStateAsync("batteryHealth", { val: vehicleData.battery.batteryHealth.value, ack: true });
+	await object.setStateAsync("batteryStatusActual", { val: vehicleData.battery.batteryStatusActual.value, ack: true });
+	await object.setStateAsync("tirePressure", { val: vehicleData.tirePressure.value, ack: true });
 	//object.log.info("Data Update");
 }
