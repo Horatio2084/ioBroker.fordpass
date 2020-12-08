@@ -38,6 +38,8 @@ For example:
 
 ## Changelog
 
+### 0.0.2
+* (Horatio2084) some Bugfix and more Data
 ### 0.0.1
 * (Horatio2084) initial release
 
