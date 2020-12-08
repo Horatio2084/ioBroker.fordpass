@@ -138,7 +138,7 @@ class Fordpass extends utils.Adapter {
 		this.setObjectNotExistsAsync("oilLife", {
 			type: "state",
 			common: {
-				name: "OilLife",
+				name: "Oil Life",
 				type: "string",
 				role: "value",
 				read: true,
@@ -149,8 +149,41 @@ class Fordpass extends utils.Adapter {
 		this.setObjectNotExistsAsync("oilLifeActual", {
 			type: "state",
 			common: {
-				name: "OilLife in %",
+				name: "Oil Life in %",
 				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("batteryHealth", {
+			type: "state",
+			common: {
+				name: "Battery Health",
+				type: "string",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("batteryStatusActual", {
+			type: "state",
+			common: {
+				name: "Battery Status Actual",
+				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("tirePressure", {
+			type: "state",
+			common: {
+				name: "Status Tire Pressure",
+				type: "string",
 				role: "value",
 				read: true,
 				write: false,
@@ -167,8 +200,11 @@ class Fordpass extends utils.Adapter {
 		this.setStateAsync("longitude", vehicleData.gps.longitude);
 		this.setStateAsync("oilLife",vehicleData.oil.oilLife);
 		this.setStateAsync("oilLifeActual", vehicleData.oil.oilLifeActual);
-	
-	
+		this.setStateAsync("batteryHealth",vehicleData.battery.batteryHealth.value);
+		this.setStateAsync("batteryStatusActual", vehicleData.battery.batteryStatusActual.value);
+		this.setStateAsync("tirePressure", vehicleData.tirePressure.value);
+
+		
 		setInterval(main, this.config.interval, this);
 
 	
@@ -313,5 +349,8 @@ async function main(object) {
 	object.setStateAsync("flongitude", vehicleData.gps.longitude);
 	object.setStateAsync("oilLife",vehicleData.oil.oilLife);
 	object.setStateAsync("OilLifeActual", vehicleData.oil.oilLifeActual);
+	object.setStateAsync("batteryHealth",vehicleData.battery.batteryHealth.value);
+	object.setStateAsync("batteryStatusActual", vehicleData.battery.batteryStatusActual.value);
+	object.setStateAsync("tirePressure", vehicleData.tirePressure.value);
 	//object.log.info("Data Update");
 }
