@@ -15,9 +15,13 @@
 ## fordpass adapter for ioBroker
 
 This adapter collect Data over the Ford API from your car with FordPass.
+
 For example:
+
 -Oil Status
+
 -Lockstatus
+
 -Odometer
 
 
@@ -33,6 +37,8 @@ For example:
 -issues door lock command to the vehicle
 
 -issues door unlock command to the vehicle
+
+-cleanup Code (copied from Template)
 
 
 
