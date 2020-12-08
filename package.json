@@ -2,14 +2,9 @@
   "name": "iobroker.fordpass",
   "version": "0.0.2",
   "description": "Data from Ford API",
-  "author": {
-    "name": "Horatio2084",
-    "email": "horak@live.at"
-  },
+  "author": "Horatio2084 <horak@live.at>",
   "contributors": [
-    {
-      "name": "Horatio2084"
-    }
+    "Horatio2084"
   ],
   "homepage": "https://github.com/Horatio2084/ioBroker.fordpass",
   "license": "MIT",
@@ -20,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Horatio2084/ioBroker.fordpass"
+    "url": "git+https://github.com/Horatio2084/ioBroker.fordpass.git"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
@@ -60,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/Horatio2084/ioBroker.fordpass/issues"
   },
-  "readmeFilename": "README.md"
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }
