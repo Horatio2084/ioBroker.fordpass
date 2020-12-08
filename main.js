@@ -138,7 +138,7 @@ class Fordpass extends utils.Adapter {
 		this.setObjectNotExistsAsync("oilLife", {
 			type: "state",
 			common: {
-				name: "OilLife",
+				name: "Oil Life",
 				type: "string",
 				role: "value",
 				read: true,
@@ -149,8 +149,41 @@ class Fordpass extends utils.Adapter {
 		this.setObjectNotExistsAsync("oilLifeActual", {
 			type: "state",
 			common: {
-				name: "OilLife in %",
+				name: "Oil Life in %",
 				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("batteryHealth", {
+			type: "state",
+			common: {
+				name: "Battery Health",
+				type: "string",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("batteryStatusActual", {
+			type: "state",
+			common: {
+				name: "Battery Status Actual",
+				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+			},
+			native: {},
+		});
+		this.setObjectNotExistsAsync("tirePressure", {
+			type: "state",
+			common: {
+				name: "Status Tire Pressure",
+				type: "string",
 				role: "value",
 				read: true,
 				write: false,
@@ -167,8 +200,11 @@ class Fordpass extends utils.Adapter {
 		this.setStateAsync("longitude", vehicleData.gps.longitude);
 		this.setStateAsync("oilLife",vehicleData.oil.oilLife);
 		this.setStateAsync("oilLifeActual", vehicleData.oil.oilLifeActual);
-	
-	
+		this.setStateAsync("batteryHealth",vehicleData.battery.batteryHealth.value);
+		this.setStateAsync("batteryStatusActual", vehicleData.battery.batteryStatusActual.value);
+		this.setStateAsync("tirePressure", vehicleData.tirePressure.value);
+
+		
 		setInterval(main, this.config.interval, this);
 
 	
@@ -304,14 +340,17 @@ async function main(object) {
 	await car.auth()
 	var vehicleData = await car.status();
 
-	object.setStateAsync("VIN", vehicleData.vin);
-	object.setStateAsync("Lockstatus",vehicleData.lockStatus.value);
-	object.setStateAsync("Odometer", vehicleData.odometer.value);
-	object.setStateAsync("fuelLevel",vehicleData.fuel.fuelLevel);
-	object.setStateAsync("fueldistanceToEmpty", vehicleData.fuel.distanceToEmpty);
-	object.setStateAsync("latitude",vehicleData.gps.latitude);
-	object.setStateAsync("flongitude", vehicleData.gps.longitude);
-	object.setStateAsync("oilLife",vehicleData.oil.oilLife);
-	object.setStateAsync("OilLifeActual", vehicleData.oil.oilLifeActual);
+	await object.setStateAsync("VIN", { val: vehicleData.vin, ack: true });
+	await object.setStateAsync("Lockstatus", { val: vehicleData.lockStatus.value, ack: true });
+	await object.setStateAsync("Odometer", { val: vehicleData.odometer.value, ack: true });
+	await object.setStateAsync("fuelLevel", { val: vehicleData.fuel.fuelLevel, ack: true });
+	await object.setStateAsync("fueldistanceToEmpty", { val: vehicleData.fuel.distanceToEmpty, ack: true });
+	await object.setStateAsync("latitude", { val: vehicleData.gps.latitude, ack: true });
+	await object.setStateAsync("longitude", { val: vehicleData.gps.longitude, ack: true });
+	await object.setStateAsync("oilLife", { val: vehicleData.oil.oilLife, ack: true });
+	await object.setStateAsync("oilLifeActual", { val: vehicleData.oil.oilLifeActual, ack: true });
+	await object.setStateAsync("batteryHealth", { val: vehicleData.battery.batteryHealth.value, ack: true });
+	await object.setStateAsync("batteryStatusActual", { val: vehicleData.battery.batteryStatusActual.value, ack: true });
+	await object.setStateAsync("tirePressure", { val: vehicleData.tirePressure.value, ack: true });
 	//object.log.info("Data Update");
 }
