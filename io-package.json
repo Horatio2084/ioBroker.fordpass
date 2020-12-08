@@ -72,7 +72,8 @@
 	"native": {
 		"user": "Username",
 		"password": "Password",
-		"vin": "vin"
+		"vin": "vin",
+		"interval": 300000
 	},
 	"objects": [],
 	"instanceObjects": []

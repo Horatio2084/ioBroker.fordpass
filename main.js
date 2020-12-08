@@ -12,6 +12,9 @@ const utils = require("@iobroker/adapter-core");
 // const fs = require("fs");
 const fordApi = require('ffpass');
 
+
+
+
 class Fordpass extends utils.Adapter {
 
 	/**
@@ -32,7 +35,9 @@ class Fordpass extends utils.Adapter {
 	/**
 	 * Is called when databases are connected and adapter received configuration.
 	 */
-	async onReady() {
+ 	async onReady() {
+
+
 		const car = new fordApi.vehicle(this.config.user, this.config.password, this.config.vin)
 		// Initialize your adapter here
 
@@ -52,8 +57,6 @@ class Fordpass extends utils.Adapter {
 
 		// to view current vehicle information including location
 		var vehicleData = await car.status();
-		this.log.info(vehicleData);
-		this.log.info(vehicleData.vin);
 		
 		this.setObjectNotExistsAsync("VIN", {
 			type: "state",
@@ -91,6 +94,10 @@ class Fordpass extends utils.Adapter {
 		this.setStateAsync("VIN", vehicleData.vin);
 		this.setStateAsync("Lockstatus",vehicleData.lockStatus.value);
 		this.setStateAsync("Odometer", vehicleData.odometer.value);
+		setInterval(main, this.config.interval, this);
+
+	
+
 
 /*
 		await this.setObjectNotExistsAsync("testVariable", {
@@ -204,6 +211,7 @@ class Fordpass extends utils.Adapter {
 
 }
 
+
 // @ts-ignore parent is a valid property on module
 if (module.parent) {
 	// Export the constructor in compact mode
@@ -214,4 +222,15 @@ if (module.parent) {
 } else {
 	// otherwise start the instance directly
 	new Fordpass();
+}
+
+async function main(object) {
+	const car = new fordApi.vehicle(object.config.user, object.config.password, object.config.vin)
+	await car.auth()
+	var vehicleData = await car.status();
+
+	object.setStateAsync("VIN", vehicleData.vin);
+	object.setStateAsync("Lockstatus",vehicleData.lockStatus.value);
+	object.setStateAsync("Odometer", vehicleData.odometer.value);
+	object.log.info("Data Update");
 }
