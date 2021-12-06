@@ -12,6 +12,8 @@
 
 **Tests:** ![Test and Release](https://github.com/Horatio2084/ioBroker.fordpass/workflows/Test%20and%20Release/badge.svg)
 
+#This repository is no longer maintained.
+
 ## fordpass adapter for ioBroker
 
 This adapter collect Data over the Ford API from your car with FordPass.
